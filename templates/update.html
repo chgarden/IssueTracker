@@ -5,68 +5,104 @@
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for msg in messages %}
-                    <p>{{ msg }}</p>
+                    <div class="pt-2 bg-white"><h3>{{ msg }}</h3></div>
                 {% endfor %}
             {% endif %}
         {% endwith %}
 
-        <label>Issue ID
-            <input type="input" name="issue_id" value="{{ issue.issue_id }}" readonly/>
-        </label>
-        <label>Project
-            <input type="input" name="project" value="{{ issue.project }}" maxlength="40" required/>
-        </label>
-        <label>Priority
-            <select name="priority">
-                <option value="{{ issue.priority }}">{{ issue.priority }}</option>
-                <option value="Minor">Minor</option>
-                <option value="Normal">Normal</option>
-                <option value="Major">Major</option>
-                <option value="Critical">Critical</option>
-                <option value="Showstopper">Show-Stopper</option>
+        <div class="pt-4 form-group">
+            <label>Issue ID
+                <input type="input" name="issue_id" value="{{ issue.issue_id }}" readonly/>
+            </label>
+        </div>
 
-            </select>
-        </label>
-        <label>Status
-            <select name="status" id="status">
-                <option value="{{ issue.status }}">{{ issue.status }}</option>
-                <option value="Open">Open</option>
-                <option value="In-Progress">In-Progress</option>
-                <option value="Fixed">Fixed</option>
-                <option value="Closed">Closed</option>
-                <option value="Reopened">Reopened</option>
+        <div class="form-group">
+            <label>Project
+                <input type="input" name="project" value="{{ issue.project }}" maxlength="40" required/>
+            </label>
+        </div>
 
-            </select>
-        </label>
-        <label>Summary
-            <input type="input" name="summary" value="{{ issue.summary }}" maxlength="50" required/>
-        </label>
-        <label>Description
-            <textarea name="description" rows="4" cols="50" maxlength="500" required>{{ issue.description }}</textarea>
-        </label>
-        <label>Assignee
-            <input type="input" name="assignee" value="{{ issue.assignee }}" maxlength="40" required/>
-        </label>
-        <label>Date Created
-            <input type="date" name="date_created" value="{{ issue.date_created }}" readonly/>
-        </label>
-        <label>Image
-            <input type="file"
-                   name="file"
-                   accept="image/*"
-                   onchange="loadFile(event)"
-                   oninput="filesize(this);"
-                    />
-        </label>
+        <div class="form-group">
+            <label>Priority
+                <select name="priority">
+                    <option value="{{ issue.priority }}">{{ issue.priority }}</option>
+                    <option value="Minor">Minor</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Major">Major</option>
+                    <option value="Critical">Critical</option>
+                    <option value="Showstopper">Show-Stopper</option>
 
-        <p><img id="attached_image" width="400" src="data:image;base64,{{ issue.attached_image }}"/></p>
+                </select>
+            </label>
+        </div>
 
-        <label>Delete Issue?
-            <input type="checkbox" name="delete"/>
-        </label>
+        <div class="form-group">
+            <label>Status
+                <select name="status" id="status">
+                    <option value="{{ issue.status }}">{{ issue.status }}</option>
+                    <option value="Open">Open</option>
+                    <option value="In-Progress">In-Progress</option>
+                    <option value="Fixed">Fixed</option>
+                    <option value="Closed">Closed</option>
+                    <option value="Reopened">Reopened</option>
 
-        <input type="submit" name="submit" value="OK"/>
-        <input type="submit" name="submit" value="Cancel" onclick="window.history.go(-1); return false;"/>
+                </select>
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label>Summary
+                <input type="input" name="summary" value="{{ issue.summary }}" maxlength="50" required/>
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label>Description
+                <textarea name="description" rows="4" cols="50" maxlength="500"
+                          required>{{ issue.description }}</textarea>
+            </label>
+        </div>
+
+        <div class="form-group">
+
+            <label>Assignee
+                <input type="input" name="assignee" value="{{ issue.assignee }}" maxlength="40" required/>
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label>Date Created
+                <input type="date" name="date_created" value="{{ issue.date_created }}" readonly/>
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label>Image
+                <input type="file"
+                       name="file"
+                       accept="image/*"
+                       onchange="loadFile(event)"
+                       oninput="filesize(this);"
+                />
+            </label>
+        </div>
+
+        <div class="form-group">
+            <p><img id="attached_image" width="400" src="data:image;base64,{{ issue.attached_image }}"/></p>
+
+        </div>
+
+        <div class="form-group">
+            <label>Delete Issue?
+                <input type="checkbox" name="delete"/>
+            </label>
+        </div>
+
+        <div class="pb-4 form-group">
+            <input type="submit" name="submit" value="OK"/>
+            <input type="submit" name="submit" value="Cancel" onclick="window.history.go(-1); return false;"/>
+        </div>
+
     </form>
     <script>
         function filesize(elem) {

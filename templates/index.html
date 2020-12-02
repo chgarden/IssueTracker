@@ -1,17 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-
     <form action="" method="POST" enctype="multipart/form-data">
+
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for msg in messages %}
-                    <p>{{ msg }}</p>
+                    <div class="pt-2 bg-white"><h3>{{ msg }}</h3></div>
                 {% endfor %}
             {% endif %}
         {% endwith %}
 
-        <table class="table">
+        <table class="table table-striped">
 
             <tr>
                 <th>Issue ID</th>

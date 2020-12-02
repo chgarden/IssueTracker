@@ -12,6 +12,8 @@ from datetime import datetime
 import pymysql
 from sqlalchemy.util import b64encode
 
+
+
 pymysql.install_as_MySQLdb()
 ALLOWED_EXTENSIONS = {"jpg", "jpeg", "pdf", "png"}
 

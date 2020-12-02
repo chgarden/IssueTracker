@@ -8,16 +8,22 @@
 </head>
 <body>
 
-<div class="container" style="background-color: lightsteelblue">
-    <nav class="navbar navbar-light  bg-light border">
-        <a class="navbar-brand " href="/">IssueTracker</a>
-        <div class="navbar" id="navbarNavAltMarkup">
-                <a class="nav-item nav-link" href="/add">Add</a>
-                <a class="nav-item nav-link" href="/find">Find</a>
-        </div>
+<div class="container" style="background-color: white">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+         <a class="navbar-brand " href="/">IssueTracker</a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/add">Add</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/find">Find</a>
+            </li>
+        </ul>
     </nav>
-   {% block content %}{% endblock %}
-</div>
+    <div class="container" style="background-color: lightsteelblue">
+    {% block content %}{% endblock %}
+    </div>
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
