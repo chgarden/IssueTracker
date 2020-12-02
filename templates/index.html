@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for msg in messages %}
+                    <p>{{ msg }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <table class="table">
+
+            <tr>
+                <th>Issue ID</th>
+                <th>Project</th>
+                <th>Summary</th>
+                <th>Status</th>
+            </tr>
+
+            {% for row in issues %}
+                <tr>
+                    <td><a href="/update/{{ row.issue_id }}">{{ row.issue_id }}</a></td>
+                    <td>{{ row.project }}</td>
+                    <td>{{ row.summary }}</td>
+                    <td>{{ row.status }}</td>
+
+                    <!--  <td>
+                   <a href="/update/{{ row.id }}" class="btn btn-warning btn-xs" data-toggle="modal"
+                       data-target="#modaledit{{ row.id }}">Edit</a>
+                    <a href="/delete/{{ row.id }}" class="btn btn-danger btn-xs"
+                       onclick="return confirm('Are You Sure To Delete ?')">Delete</a>-->
+
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </form>
+{% endblock %}

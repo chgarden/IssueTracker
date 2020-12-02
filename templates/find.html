@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for msg in messages %}
+                    <p>{{ msg }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <div class="container" style=" background-color: lightsteelblue">
+            <label>Enter Isssue ID:
+                <input type="search" name="issue_id" size="8" maxlength="8" required/>
+            </label>
+        </div>
+    </form>
+{% endblock %}
