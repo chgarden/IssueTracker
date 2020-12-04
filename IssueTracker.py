@@ -1,18 +1,17 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+
 """
+# -*- coding: utf-8 -*-
 Created on Tue Nov 17 16:28:01 2020
 
 @author: crystalhiggins
 """
 
 from flask import Flask, render_template, request, flash, redirect, url_for
-from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import pymysql
+from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.util import b64encode
-
-
 
 pymysql.install_as_MySQLdb()
 ALLOWED_EXTENSIONS = {"jpg", "jpeg", "pdf", "png"}
@@ -57,7 +56,6 @@ class Issue(db.Model):
 @app.route("/")
 def list():
     all_data = db.session.query(Issue).all()
-    print(all_data)
 
     return render_template('index.html', title='IssueTracker', issues = all_data)
 
@@ -115,11 +113,11 @@ def add():
         if not (file.filename == ""):
             if "filesize" in request.cookies:
                 if not allowed_image_filesize(request.cookies["filesize"]):
-                    print("Filesize exceeded maximum limit")
+                    flash("Filesize exceeded maximum limit")
                     return redirect(request.url)
 
                 if not allowed_image(file.filename):
-                    print("That file extension is not allowed")
+                    flash("That file extension is not allowed")
                     return redirect(request.url)
 
         issue = Issue(  project=project,
@@ -142,8 +140,6 @@ def add():
 @app.route("/find", methods=["POST", "GET"])
 def find():
     if request.method == "POST":
-       # issue_id = request.form["issue_id"]
-       # one_issue = db.session.query(Issue).filter(Issue.issue_id == id).first()
         return redirect(url_for("update", id=request.form["issue_id"]))
     else:
         return render_template('find.html', title='Find Issue')
