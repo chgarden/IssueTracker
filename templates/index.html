@@ -20,9 +20,9 @@
                 <th>Status</th>
             </tr>
 
-            {% for row in issues %}
+            {% for row in issues %}:
                 <tr>
-                    <td><a href="/update/{{ row.issue_id }}">{{ row.issue_id }}</a></td>
+                    <td><a href="/IssueTracker/update/{{ row.issue_id }}">{{ row.issue_id }}</a></td>
                     <td>{{ row.project }}</td>
                     <td>{{ row.summary }}</td>
                     <td>{{ row.status }}</td>
