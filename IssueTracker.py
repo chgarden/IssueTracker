@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 """
-# -*- coding: utf-8 -*-
 Created on Tue Nov 17 16:28:01 2020
 
 @author: crystalhiggins
@@ -88,8 +87,8 @@ def update(id):
 
             db.session.commit()
             flash("Issue Updated")
-            return redirect(request.host_url)
-    else:
+            return redirect(url_for("update",id=issue_id))
+    else:  # coming from find
         one_issue = db.session.query(Issue).filter(Issue.issue_id==id).first()
         if (one_issue is None):
             flash("Issue Not Found")
@@ -132,7 +131,7 @@ def add():
         db.session.commit()
         flash("Issue Added")
 
-        return redirect(request.host_url)
+        return redirect(url_for("list"))
     else:
         return render_template('add.html', title='Add Issue')
 
